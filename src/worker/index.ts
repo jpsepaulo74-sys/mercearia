@@ -1,6 +1,22 @@
+
+import type { Env } from "@/shared/types";
+
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { ProductSchema, CreateSaleSchema } from "@/shared/types";
+import type { Env } from "@/shared/types";
+import { D1Database } from "@cloudflare/workers-types";
+
+// ...
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const db = env.DB as D1Database; // ✅ tipo explícito
+
+    // ... resto do teu código
+  },
+};
+
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -222,3 +238,10 @@ app.delete("/api/trash/sales/:id/permanent", async (c) => {
 });
 
 export default app;
+export type Env = {
+  // exemplo de propriedades
+  DATABASE_URL: string;
+  API_KEY?: string;
+};
+export type Env = Record<string, string>;
+

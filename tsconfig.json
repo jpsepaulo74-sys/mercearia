@@ -7,3 +7,6 @@
     { "path": "./tsconfig.worker.json" }
   ]
 }
+"compilerOptions": {
+  "types": ["node", "./worker-configuration.d.ts"] // Remova esta entrada
+}

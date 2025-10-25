@@ -45,3 +45,7 @@ export interface DashboardStats {
   monthly_sales: number;
   monthly_profit: number;
 }
+
+export interface Env {
+  [key: string]: unknown;
+}
